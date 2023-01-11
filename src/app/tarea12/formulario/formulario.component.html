@@ -1,0 +1,71 @@
+<h2 class="text-primary text-center">Formulario de Contacto</h2>
+
+<section class="container-sm">
+    <form [formGroup]="registroForm" (ngSubmit)="onSubmit()">
+
+        <section class="ms-3 text-center">
+            <h3 *ngIf="gracias==true" class="p-3 bg-danger bg-opacity-10 border border-danger border-start-1 rounded-end">Gracias por comunicarnos con nosotros</h3>
+        </section>
+
+        <section class="form-group m-3">
+            <label for="nombre">Nombres completos:</label>
+            <input type="text" class="form-control" formControlName="nombre" [ngStyle]="{'border-color':nombre?.invalid && (nombre?.dirty || nombre?.touched)?'red':'gray'}">
+            <section *ngIf="nombre?.invalid && (nombre?.dirty || nombre?.touched)">
+                <section *ngIf="nombre?.errors?.['required']" class="alert alert-success">
+                    El nombre es obligatorio
+                </section>               
+            </section>
+        </section>
+
+        <section class="form-group m-3">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" formControlName="email" [ngStyle]="{'border-color':email?.invalid && (email?.dirty || email?.touched)?'red':'gray'}">
+            <section *ngIf="email?.invalid && (email?.dirty || email?.touched)">
+                <section *ngIf="email?.errors?.['required']" class="alert alert-success">
+                    El Email es obligatorio
+                </section>               
+            </section>
+        </section>
+
+        <section class="form-group m-3">
+            <label for="telefono">Teléfono:</label>
+            <input type="number" maxlength="8" class="form-control" formControlName="telefono" [ngStyle]="{'border-color':telefono?.invalid && (telefono?.dirty || telefono?.touched)?'red':'gray'}">
+            <section *ngIf="telefono?.invalid && (telefono?.dirty || telefono?.touched)">
+                <section *ngIf="telefono?.errors?.['required']" class="alert alert-success">
+                    El Teléfono es obligatorio
+                </section>
+                <section *ngIf="telefono?.errors?.['pattern']" class="alert alert-success">
+                    El telefono debe ser solo 9 dígitos 
+                </section>
+            </section>
+        </section>
+
+        <section class="form-group m-3">
+            <label for="asunto">Asunto:</label>
+            <input type="text" class="form-control" formControlName="asunto" [ngStyle]="{'border-color':asunto?.invalid && (asunto?.dirty || asunto?.touched)?'red':'gray'}">
+            <section *ngIf="asunto?.invalid && (asunto?.dirty || asunto?.touched)">
+                <section *ngIf="asunto?.errors?.['required']" class="alert alert-success">
+                    El ciudad es obligatorio
+                </section>               
+            </section>
+        </section>
+
+        <section class="form-group m-3">
+            <label for="ciudad">Mensaje:</label>
+            <input type="mensaje" class="form-control" formControlName="mensaje" [ngStyle]="{'border-color':mensaje?.invalid && (mensaje?.dirty || mensaje?.touched)?'red':'gray'}">
+            <section *ngIf="mensaje?.invalid && (mensaje?.dirty || mensaje?.touched)">
+                <section *ngIf="mensaje?.errors?.['required']" class="alert alert-success">
+                    Solicito información
+                </section>               
+            </section>
+        </section>
+
+        <section class="form-group m-3 text-center">
+            <input type="submit" value="Enviar" class="btn btn-success" [disabled]="registroForm.invalid">
+            
+        </section>
+
+        
+    </form>
+</section>
+
